@@ -1,8 +1,9 @@
 import Sequelize from 'sequelize';
 import { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_PORT, DB_USER, NODE_ENV } from '../config';
-import PostModel from '../models/posts.model';
-import CategoryModel from '../models/categories.model';
 import AuthorModel from '../models/authors.model';
+import CategoryModel from '../models/categories.model';
+import CommentModel from '../models/comments.model';
+import PostModel from '../models/posts.model';
 
 const sequelize = new Sequelize.Sequelize(DB_DATABASE || '', DB_USER || '', DB_PASSWORD, {
   dialect: 'mysql',
@@ -29,9 +30,10 @@ const sequelize = new Sequelize.Sequelize(DB_DATABASE || '', DB_USER || '', DB_P
 sequelize.authenticate();
 
 export const DB = {
-  Posts: PostModel(sequelize),
-  Categories: CategoryModel(sequelize),
   Authors: AuthorModel(sequelize),
+  Categories: CategoryModel(sequelize),
+  Comments: CommentModel(sequelize),
+  Posts: PostModel(sequelize),
   sequelize, // connection instance (RAW queries)
   Sequelize, // library
 };
