@@ -23,4 +23,3 @@ export class UpdateAuthorDto {
   @IsNotEmpty()
   public lastName: string;
 }
-
