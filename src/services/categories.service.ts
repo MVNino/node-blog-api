@@ -11,27 +11,27 @@ export class CategoryService {
   }
 
   public async findByCategoryId(categoryId: number): Promise<Category> {
-    const findCategory: Category | null = await DB.Categories.findByPk(categoryId);
+    const foundCategory: Category | null = await DB.Categories.findByPk(categoryId);
 
-    if (!findCategory) throw new HttpException(404, "Category doesn't exist");
+    if (!foundCategory) throw new HttpException(404, "Category doesn't exist");
 
-    return findCategory;
+    return foundCategory;
   }
 
   public async createCategory(categoryData: CreateCategoryDto): Promise<Category> {
-    const findCategory: Category = await DB.Categories.findOne({
+    const foundCategory: Category = await DB.Categories.findOne({
       where: { name: categoryData.name },
     });
 
-    if (findCategory) throw new HttpException(409, `This name ${categoryData.name} already exists`);
+    if (foundCategory) throw new HttpException(409, `This name ${categoryData.name} already exists`);
 
     return await DB.Categories.create(categoryData);
   }
 
   public async updateCategory(categoryId: number, categoryData: UpdateCategoryDto): Promise<Category> {
-    const findCategory: Category = await DB.Categories.findByPk(categoryId);
+    const foundCategory: Category = await DB.Categories.findByPk(categoryId);
 
-    if (!findCategory) throw new HttpException(404, "Category doesn't exist");
+    if (!foundCategory) throw new HttpException(404, "Category doesn't exist");
 
     await DB.Categories.update(categoryData, { where: { id: categoryId } });
 

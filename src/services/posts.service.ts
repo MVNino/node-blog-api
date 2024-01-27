@@ -11,27 +11,27 @@ export class PostService {
   }
 
   public async findByPostId(postId: number): Promise<Post> {
-    const findPost: Post | null = await DB.Posts.findByPk(postId);
+    const foundPost: Post | null = await DB.Posts.findByPk(postId);
 
-    if (!findPost) throw new HttpException(404, "Post doesn't exist");
+    if (!foundPost) throw new HttpException(404, "Post doesn't exist");
 
-    return findPost;
+    return foundPost;
   }
 
   public async createPost(postData: CreatePostDto): Promise<Post> {
-    const findPost: Post = await DB.Posts.findOne({
+    const foundPost: Post = await DB.Posts.findOne({
       where: { title: postData.title },
     });
 
-    if (findPost) throw new HttpException(409, `This title ${postData.title} already exists`);
+    if (foundPost) throw new HttpException(409, `This title ${postData.title} already exists`);
 
     return await DB.Posts.create(postData);
   }
 
   public async updatePost(postId: number, postData: UpdatePostDto): Promise<Post> {
-    const findPost: Post = await DB.Posts.findByPk(postId);
+    const foundPost: Post = await DB.Posts.findByPk(postId);
 
-    if (!findPost) throw new HttpException(404, "Post doesn't exist");
+    if (!foundPost) throw new HttpException(404, "Post doesn't exist");
 
     await DB.Posts.update(postData, { where: { id: postId } });
 
