@@ -1,12 +1,9 @@
-import { Sequelize, DataTypes, Model, Optional } from "sequelize";
-import { Category } from "../interfaces/categories.interface";
+import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
+import { Category } from '../interfaces/categories.interface';
 
-export type CategoryCreationAttributes = Optional<Category, "id" | "name">;
+export type CategoryCreationAttributes = Optional<Category, 'id' | 'name'>;
 
-export class CategoryModel
-  extends Model<Category, CategoryCreationAttributes>
-  implements Category
-{
+export class CategoryModel extends Model<Category, CategoryCreationAttributes> implements Category {
   public id?: number;
   public name!: string;
 
@@ -28,9 +25,9 @@ export default function (sequelize: Sequelize): typeof CategoryModel {
       },
     },
     {
-      tableName: "categories",
+      tableName: 'categories',
       sequelize,
-    }
+    },
   );
 
   return CategoryModel;

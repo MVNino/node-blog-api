@@ -1,15 +1,9 @@
-import { Sequelize, DataTypes, Model, Optional } from "sequelize";
-import { Post } from "../interfaces/posts.interface";
+import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
+import { Post } from '../interfaces/posts.interface';
 
-export type PostCreationAttributes = Optional<
-  Post,
-  'id' | 'title' | 'description' | 'content'
->;
+export type PostCreationAttributes = Optional<Post, 'id' | 'title' | 'description' | 'content'>;
 
-export class PostModel
-  extends Model<Post, PostCreationAttributes>
-  implements Post
-{
+export class PostModel extends Model<Post, PostCreationAttributes> implements Post {
   public id?: number;
   public title!: string;
   public description?: string;
@@ -41,9 +35,9 @@ export default function (sequelize: Sequelize): typeof PostModel {
       },
     },
     {
-      tableName: "posts",
+      tableName: 'posts',
       sequelize,
-    }
+    },
   );
 
   return PostModel;

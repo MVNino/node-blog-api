@@ -1,6 +1,6 @@
-import { App } from "./app";
-import { PostRoute } from "./routes/posts.route";
-import { ValidateEnv } from "./utils/validateEnv";
+import { App } from './app';
+import { PostRoute } from './routes/posts.route';
+import { ValidateEnv } from './utils/validateEnv';
 
 ValidateEnv();
 
