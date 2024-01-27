@@ -7,29 +7,29 @@ import { CreatePostDto, UpdatePostDto } from "../dtos/posts.dto";
 export class PostRoute implements Routes {
   public path = "/posts";
   public router = Router();
-  public post = new PostController();
+  public postController = new PostController();
 
   constructor() {
     this.initializeRoutes();
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}`, this.post.getAll);
+    this.router.get(`${this.path}`, this.postController.getAll);
 
     this.router.post(
       `${this.path}`,
       ValidationMiddleware(CreatePostDto),
-      this.post.create
+      this.postController.create
     );
 
-    this.router.get(`${this.path}/:id`, this.post.getById);
+    this.router.get(`${this.path}/:id`, this.postController.getById);
 
     this.router.put(
       `${this.path}/:id`,
       ValidationMiddleware(UpdatePostDto, true),
-      this.post.update
+      this.postController.update
     );
 
-    this.router.delete(`${this.path}/:id`, this.post.delete);
+    this.router.delete(`${this.path}/:id`, this.postController.delete);
   }
 }

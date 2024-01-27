@@ -1,15 +1,15 @@
-import 'reflect-metadata';
+import "reflect-metadata";
 import "dotenv/config";
 import express, { Express, Response, Request } from "express";
 import http, { Server } from "http";
 import { DB } from "./database";
 import { Routes } from "./interfaces/routes.interface";
-import compression from 'compression';
+import compression from "compression";
 // import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import helmet from 'helmet';
-import hpp from 'hpp';
-import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from './config';
+import cors from "cors";
+import helmet from "helmet";
+import hpp from "hpp";
+import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from "./config";
 // import { stream } from './utils/logger';
 
 export class App {
