@@ -7,9 +7,7 @@ import { CreatePostDto, UpdatePostDto } from "../dtos/posts.dto";
 @Service()
 export class PostService {
   public async findAllPosts(): Promise<Post[]> {
-    const allPost: Post[] = await DB.Posts.findAll();
-
-    return allPost;
+    return await DB.Posts.findAll();
   }
 
   public async findByPostId(postId: number): Promise<Post> {
@@ -31,9 +29,7 @@ export class PostService {
         `This title ${postData.title} already exists`
       );
 
-    const createPostData: Post = await DB.Posts.create(postData);
-
-    return createPostData;
+    return await DB.Posts.create(postData);
   }
 
   public async updatePost(
@@ -44,9 +40,9 @@ export class PostService {
 
     if (!findPost) throw new HttpException(404, "Post doesn't exist");
 
-    const createPostData: Post = await DB.Posts.create(postData);
+    await DB.Posts.update(postData, { where: { id: postId } });
 
-    return createPostData;
+    return await DB.Posts.findByPk(postId)
   }
 
   public async deletePost(postId: number): Promise<Post> {

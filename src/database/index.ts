@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_PORT, DB_USER, NODE_ENV } from '../config';
 import PostModel from '../models/posts.model';
+import CategoryModel from '../models/categories.model';
 
 const sequelize = new Sequelize.Sequelize(DB_DATABASE || '', DB_USER || '', DB_PASSWORD, {
   dialect: 'mysql',
@@ -28,6 +29,7 @@ sequelize.authenticate();
 
 export const DB = {
   Posts: PostModel(sequelize),
+  Categories: CategoryModel(sequelize),
   sequelize, // connection instance (RAW queries)
   Sequelize, // library
 };
