@@ -5,7 +5,7 @@ import { AuthorController } from '../controllers/authors.controller';
 import { CreateAuthorDto, UpdateAuthorDto } from '../dtos/authors.dto';
 
 export class AuthorRoute implements Routes {
-  public path = '/authors';
+  public path = '/api/v1/authors';
   public router = Router();
   public authorController = new AuthorController();
 

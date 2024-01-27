@@ -5,7 +5,7 @@ import { CreateCategoryDto, UpdateCategoryDto } from '../dtos/categories.dto';
 import { CategoryController } from '../controllers/categories.controller';
 
 export class CategoryRoute implements Routes {
-  public path = '/categories';
+  public path = '/api/v1/categories';
   public router = Router();
   public categoryController = new CategoryController();
 

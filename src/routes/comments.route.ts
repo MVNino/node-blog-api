@@ -5,7 +5,7 @@ import { ValidationMiddleware } from '../middlewares/validation.middleware';
 import { CreateCommentDto } from '../dtos/comments.dto';
 
 export class CommentRoute implements Routes {
-  public path = '/comments';
+  public path = '/api/v1/comments';
   public router = Router();
   public commentController = new CommentController();
 

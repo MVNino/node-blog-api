@@ -5,7 +5,7 @@ import { ValidationMiddleware } from '../middlewares/validation.middleware';
 import { CreatePostDto, UpdatePostDto } from '../dtos/posts.dto';
 
 export class PostRoute implements Routes {
-  public path = '/posts';
+  public path = '/api/v1/posts';
   public router = Router();
   public postController = new PostController();
 

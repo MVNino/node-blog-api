@@ -1,15 +1,16 @@
 import 'reflect-metadata';
 import 'dotenv/config';
-import express, { Express, Response, Request } from 'express';
-import http, { Server } from 'http';
+import express, { Express } from 'express';
 import { DB } from './database';
 import { Routes } from './interfaces/routes.interface';
 import compression from 'compression';
-// import cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import hpp from 'hpp';
-import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from './config';
+import { ORIGIN, CREDENTIALS } from './config';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 // import { stream } from './utils/logger';
 
 export class App {
@@ -25,6 +26,7 @@ export class App {
     this.connectToDatabase();
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
+    this.initializeSwagger();
   }
 
   public listen() {
@@ -48,12 +50,28 @@ export class App {
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
-    // this.app.use(cookieParser());
+    this.app.use(cookieParser());
   }
 
   private initializeRoutes(routes: Routes[]) {
     routes.forEach(route => {
       this.app.use('/', route.router);
     });
+  }
+
+  private initializeSwagger() {
+    const options = {
+      swaggerDefinition: {
+        info: {
+          title: 'REST API',
+          version: '1.0.0',
+          description: 'Example docs',
+        },
+      },
+      apis: ['swagger.yaml'],
+    };
+
+    const specs = swaggerJSDoc(options);
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
   }
 }
