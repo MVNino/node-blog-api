@@ -17,6 +17,8 @@ const getAuthorization = (req: RequestWithUser) => {
 
 export const AuthMiddleware = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   try {
+    if (req.path === '/api-docs/') next();
+
     const Authorization = getAuthorization(req);
 
     if (Authorization) {

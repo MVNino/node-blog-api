@@ -8,10 +8,11 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import hpp from 'hpp';
-import { ORIGIN, CREDENTIALS } from './config';
+import morgan from 'morgan';
+import { ORIGIN, CREDENTIALS, LOG_FORMAT } from './config';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-// import { stream } from './utils/logger';
+import { stream } from './utils/logger';
 
 export class App {
   private app: Express;
@@ -25,8 +26,8 @@ export class App {
 
     this.connectToDatabase();
     this.initializeMiddlewares();
-    this.initializeRoutes(routes);
     this.initializeSwagger();
+    this.initializeRoutes(routes);
   }
 
   public listen() {
@@ -43,7 +44,7 @@ export class App {
   }
 
   private initializeMiddlewares() {
-    // this.app.use(morgan(LOG_FORMAT, { stream }));
+    this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(hpp());
     this.app.use(helmet());
@@ -76,6 +77,7 @@ export class App {
     };
 
     const specs = swaggerJSDoc(options);
+
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
   }
 }
