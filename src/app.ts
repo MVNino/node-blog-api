@@ -59,6 +59,10 @@ export class App {
     });
   }
 
+  public getServer() {
+    return this.app;
+  }
+
   private initializeSwagger() {
     const options = {
       swaggerDefinition: {

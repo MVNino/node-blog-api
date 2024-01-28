@@ -4,6 +4,7 @@ import AuthorModel from '../models/authors.model';
 import CategoryModel from '../models/categories.model';
 import CommentModel from '../models/comments.model';
 import PostModel from '../models/posts.model';
+import UserModel from '../models/users.model';
 
 const sequelize = new Sequelize.Sequelize(DB_DATABASE || '', DB_USER || '', DB_PASSWORD, {
   dialect: 'mysql',
@@ -34,6 +35,7 @@ export const DB = {
   Categories: CategoryModel(sequelize),
   Comments: CommentModel(sequelize),
   Posts: PostModel(sequelize),
+  Users: UserModel(sequelize),
   sequelize, // connection instance (RAW queries)
   Sequelize, // library
 };
