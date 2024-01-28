@@ -1,13 +1,13 @@
 tags:
-- name: categories
-  description: categories API
+  - name: categories
+    description: categories API
 
 paths:
-# [GET] categories
+  # [GET] categories
   /categories:
     get:
       tags:
-      - categories
+        - categories
       summary: Find All Categories
       responses:
         200:
@@ -15,18 +15,18 @@ paths:
         500:
           description: 'Server Error'
 
-# [POST] categories
+    # [POST] categories
     post:
       tags:
-      - categories
+        - categories
       summary: Add Category
       parameters:
-      - name: body
-        in: body
-        description: Category Data
-        required: true
-        schema:
-          $ref: '#/definitions/categories'
+        - name: body
+          in: body
+          description: Category Data
+          required: true
+          schema:
+            $ref: '#/definitions/categories'
       responses:
         201:
           description: 'Created'
@@ -37,18 +37,18 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] categories/id
+  # [GET] categories/id
   /categories/{id}:
     get:
       tags:
-      - categories
+        - categories
       summary: Find Category By Id
       parameters:
-      - name: id
-        in: path
-        description: Category Id
-        required: true
-        type: integer
+        - name: id
+          in: path
+          description: Category Id
+          required: true
+          type: integer
       responses:
         200:
           description: 'OK'
@@ -57,23 +57,23 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] categories/id
+    # [PUT] categories/id
     put:
       tags:
-      - categories
+        - categories
       summary: Update Category By Id
       parameters:
-      - name: id
-        in: path
-        description: Category Id
-        required: true
-        type: integer
-      - name: body
-        in: body
-        description: Category Data
-        required: true
-        schema:
-          $ref: '#/definitions/categories'
+        - name: id
+          in: path
+          description: Category Id
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Category Data
+          required: true
+          schema:
+            $ref: '#/definitions/categories'
       responses:
         200:
           description: 'OK'
@@ -84,17 +84,17 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] categories/id
+    # [DELETE] categories/id
     delete:
       tags:
-      - categories
+        - categories
       summary: Delete Category By Id
       parameters:
-      - name: id
-        in: path
-        description: Category Id
-        required: true
-        type: integer
+        - name: id
+          in: path
+          description: Category Id
+          required: true
+          type: integer
       responses:
         200:
           description: 'OK'
@@ -103,11 +103,11 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] posts
+  # [GET] posts
   /posts:
     get:
       tags:
-      - posts
+        - posts
       summary: Find All Posts
       responses:
         200:
@@ -115,18 +115,18 @@ paths:
         500:
           description: 'Server Error'
 
-# [POST] posts
+    # [POST] posts
     post:
       tags:
-      - posts
+        - posts
       summary: Add Post
       parameters:
-      - name: body
-        in: body
-        description: Post Data
-        required: true
-        schema:
-          $ref: '#/definitions/posts'
+        - name: body
+          in: body
+          description: Post Data
+          required: true
+          schema:
+            $ref: '#/definitions/posts'
       responses:
         201:
           description: 'Created'
@@ -137,18 +137,18 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] posts/id
+  # [GET] posts/id
   /posts/{id}:
     get:
       tags:
-      - posts
+        - posts
       summary: Find Post By Id
       parameters:
-      - name: id
-        in: path
-        description: Post Id
-        required: true
-        type: integer
+        - name: id
+          in: path
+          description: Post Id
+          required: true
+          type: integer
       responses:
         200:
           description: 'OK'
@@ -157,23 +157,23 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] posts/id
+    # [PUT] posts/id
     put:
       tags:
-      - posts
+        - posts
       summary: Update Post By Id
       parameters:
-      - name: id
-        in: path
-        description: Post Id
-        required: true
-        type: integer
-      - name: body
-        in: body
-        description: Post Data
-        required: true
-        schema:
-          $ref: '#/definitions/posts'
+        - name: id
+          in: path
+          description: Post Id
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Post Data
+          required: true
+          schema:
+            $ref: '#/definitions/posts'
       responses:
         200:
           description: 'OK'
@@ -184,17 +184,17 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] posts/id
+    # [DELETE] posts/id
     delete:
       tags:
-      - posts
+        - posts
       summary: Delete Post By Id
       parameters:
-      - name: id
-        in: path
-        description: Post Id
-        required: true
-        type: integer
+        - name: id
+          in: path
+          description: Post Id
+          required: true
+          type: integer
       responses:
         200:
           description: 'OK'
@@ -203,12 +203,11 @@ paths:
         500:
           description: 'Server Error'
 
-
-# [GET] users
+  # [GET] users
   /users:
     get:
       tags:
-      - users
+        - users
       summary: Find All Users
       responses:
         200:
@@ -216,18 +215,18 @@ paths:
         500:
           description: 'Server Error'
 
-# [POST] users
+    # [POST] users
     post:
       tags:
-      - users
+        - users
       summary: Add User
       parameters:
-      - name: body
-        in: body
-        description: user Data
-        required: true
-        schema:
-          $ref: '#/definitions/users'
+        - name: body
+          in: body
+          description: user Data
+          required: true
+          schema:
+            $ref: '#/definitions/users'
       responses:
         201:
           description: 'Created'
@@ -238,18 +237,18 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] users/id
+  # [GET] users/id
   /users/{id}:
     get:
       tags:
-      - users
+        - users
       summary: Find User By Id
       parameters:
-      - name: id
-        in: path
-        description: User Id
-        required: true
-        type: integer
+        - name: id
+          in: path
+          description: User Id
+          required: true
+          type: integer
       responses:
         200:
           description: 'OK'
@@ -258,23 +257,23 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] users/id
+    # [PUT] users/id
     put:
       tags:
-      - users
+        - users
       summary: Update User By Id
       parameters:
-      - name: id
-        in: path
-        description: user Id
-        required: true
-        type: integer
-      - name: body
-        in: body
-        description: user Data
-        required: true
-        schema:
-          $ref: '#/definitions/users'
+        - name: id
+          in: path
+          description: user Id
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: user Data
+          required: true
+          schema:
+            $ref: '#/definitions/users'
       responses:
         200:
           description: 'OK'
@@ -285,17 +284,17 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] users/id
+    # [DELETE] users/id
     delete:
       tags:
-      - users
+        - users
       summary: Delete User By Id
       parameters:
-      - name: id
-        in: path
-        description: user Id
-        required: true
-        type: integer
+        - name: id
+          in: path
+          description: user Id
+          required: true
+          type: integer
       responses:
         200:
           description: 'OK'
@@ -309,7 +308,7 @@ definitions:
   categories:
     type: object
     required:
-        - name
+      - name
     properties:
       name:
         type: string
@@ -318,8 +317,8 @@ definitions:
   posts:
     type: object
     required:
-        - title
-        - content
+      - title
+      - content
     properties:
       title:
         type: string
@@ -334,8 +333,8 @@ definitions:
   users:
     type: object
     required:
-        - email
-        - password
+      - email
+      - password
     properties:
       email:
         type: string
@@ -345,5 +344,5 @@ definitions:
         description: user Password
 
 schemes:
- - https
- - http
+  - https
+  - http
