@@ -1,4 +1,4 @@
-# Simple Blog Web App
+# Simple Blog Web API
 
 This is a simple blog web API built with Node.js. It allows users to create, read, update, and delete blog posts. The application uses Express.js as the web framework and MySQL as the database to store blog posts.
 
