@@ -21,8 +21,8 @@ export class App {
 
   constructor(routes: Routes[]) {
     this.app = express();
-    this.env = 'development';
-    this.port = 3000;
+    this.env = process.env.NODE_ENV;
+    this.port = +process.env.PORT;
 
     this.connectToDatabase();
     this.initializeMiddlewares();
