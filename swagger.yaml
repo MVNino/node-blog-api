@@ -3,6 +3,106 @@ tags:
     description: categories API
 
 paths:
+  # [GET] authors
+  /authors:
+    get:
+      tags:
+        - authors
+      summary: Find All Authors
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+    # [POST] authors
+    post:
+      tags:
+        - authors
+      summary: Add Author
+      parameters:
+        - name: body
+          in: body
+          description: Author Data
+          required: true
+          schema:
+            $ref: '#/definitions/authors'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+  # [GET] authors/id
+  /authors/{id}:
+    get:
+      tags:
+        - authors
+      summary: Find Author By Id
+      parameters:
+        - name: id
+          in: path
+          description: Author Id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+    # [PUT] authors/id
+    put:
+      tags:
+        - authors
+      summary: Update Author By Id
+      parameters:
+        - name: id
+          in: path
+          description: Author Id
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Author Data
+          required: true
+          schema:
+            $ref: '#/definitions/authors'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+    # [DELETE] authors/id
+    delete:
+      tags:
+        - authors
+      summary: Delete Author By Id
+      parameters:
+        - name: id
+          in: path
+          description: Author Id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
   # [GET] categories
   /categories:
     get:
@@ -93,6 +193,106 @@ paths:
         - name: id
           in: path
           description: Category Id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+  # [GET] comments
+  /comments:
+    get:
+      tags:
+        - comments
+      summary: Find All Comments
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+    # [POST] comments
+    post:
+      tags:
+        - comments
+      summary: Add Comment
+      parameters:
+        - name: body
+          in: body
+          description: Comment Data
+          required: true
+          schema:
+            $ref: '#/definitions/comments'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+  # [GET] comments/id
+  /comments/{id}:
+    get:
+      tags:
+        - comments
+      summary: Find Comment By Id
+      parameters:
+        - name: id
+          in: path
+          description: Comment Id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+    # [PUT] comments/id
+    put:
+      tags:
+        - comments
+      summary: Update Comment By Id
+      parameters:
+        - name: id
+          in: path
+          description: Comment Id
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Comment Data
+          required: true
+          schema:
+            $ref: '#/definitions/comments'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+    # [DELETE] comments/id
+    delete:
+      tags:
+        - comments
+      summary: Delete Comment By Id
+      parameters:
+        - name: id
+          in: path
+          description: Comment Id
           required: true
           type: integer
       responses:
@@ -305,6 +505,19 @@ paths:
 
 # definitions
 definitions:
+  authors:
+    type: object
+    required:
+      - firstName
+      - lastName
+    properties:
+      firstName:
+        type: string
+        description: Author First Name
+      lastName:
+        type: string
+        description: Author Last Name
+
   categories:
     type: object
     required:
@@ -313,6 +526,22 @@ definitions:
       name:
         type: string
         description: Category Name
+
+  comments:
+    type: object
+    required:
+      - postId
+      - content
+    properties:
+      postId:
+        type: number
+        description: Post ID
+      name:
+        type: string
+        description: Name of commentor
+      content:
+        type: string
+        description: Comment Content
 
   posts:
     type: object
