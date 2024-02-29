@@ -20,6 +20,6 @@
     "resolveJsonModule": true,
     "importHelpers": true,
   },
-  "include": ["src/**/*.ts", "src/**/*.json", ".env"],
+  "include": ["src/**/*.ts", "src/**/*.json", ".env", "src/models/index.js"],
   "exclude": ["node_modules", "src/http", "src/logs"],
 }
