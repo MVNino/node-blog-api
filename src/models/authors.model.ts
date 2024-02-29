@@ -1,10 +1,11 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
 import { Author } from '../interfaces/authors.interface';
 
-export type AuthorCreationAttributes = Optional<Author, 'id' | 'firstName' | 'lastName'>;
+export type AuthorCreationAttributes = Optional<Author, 'id' | 'postId' | 'firstName' | 'lastName'>;
 
 export class AuthorModel extends Model<Author, AuthorCreationAttributes> implements Author {
   public id?: number;
+  public postId: number;
   public firstName!: string;
   public lastName!: string;
 
@@ -18,6 +19,10 @@ export default function (sequelize: Sequelize): typeof AuthorModel {
       id: {
         autoIncrement: true,
         primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      postId: {
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
       firstName: {
